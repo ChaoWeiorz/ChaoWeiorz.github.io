@@ -23,8 +23,8 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "/images/datougit.png"
-  name             : "陈威"
+  avatar           : "../images/datougit.png"
+  name             : "Wei Chen (陈威)"
   pronouns         : # example: "she/her"  
   bio              : "开！将大局逆转吧！"
   location         : "Beijing China"
@@ -48,7 +48,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "https://github.com/ChaoWeiorz"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
