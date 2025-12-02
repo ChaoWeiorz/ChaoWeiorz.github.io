@@ -13,10 +13,12 @@ Academically, I’m what people kindly call a “free-range researcher”—I cu
 
 Outside the lab, I’m the captain of the Peking University Bodybuilding Team, where I lift both weights and team morale. I’ve competed a bit too:
 
+	•	Overall Champion in Fitness Model, Peking University’s First Fitness & Bodybuilding Championships
+	
+	•	1st place, Fitness Model (Group B), 14th Beijing Sport University Fitness & Bodybuilding Championships
+
 	•	3rd place, Men’s Physique (Group E), 19th Capital University Fitness & Bodybuilding Championships
 	
 	•	4th place, Men’s Physique (Group E), 20th Capital University Fitness & Bodybuilding Championships
-	
-	•	Overall Champion in Fitness Model, Peking University’s First Fitness & Bodybuilding Championships
 
 In short: mild academic chaos, strong English, and even stronger delts.
