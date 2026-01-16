@@ -390,12 +390,13 @@ PCA 二维可视化显示，基于 K-means 聚类（K=4）的结果在二维主�
 <div style="
   max-height:420px;
   overflow-y:auto;
-  background:#0f172a;
-  color:#e5e7eb;
+  background:#f8fafc;
+  color:#111827;
   padding:16px;
   border-radius:10px;
   font-size:0.85em;
   line-height:1.6;
+  border:1px solid #e5e7eb;
 ">
 <pre><code class="language-python">
 from sklearn.linear_model import LogisticRegression
@@ -469,12 +470,13 @@ fpr, tpr, thresholds = roc_curve(y_test, y_prob)
 <div style="
   max-height:420px;
   overflow-y:auto;
-  background:#0f172a;
-  color:#e5e7eb;
+  background:#f8fafc;
+  color:#111827;
   padding:16px;
   border-radius:10px;
   font-size:0.85em;
   line-height:1.6;
+  border:1px solid #e5e7eb;
 ">
 <pre><code class="language-python">
 from sklearn.cluster import KMeans
