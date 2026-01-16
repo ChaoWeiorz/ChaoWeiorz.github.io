@@ -4,6 +4,10 @@ permalink: /report/
 author_profile: true
 ---
 
+# 心力衰竭患者 28 天再入院的多阶段统计分析与机器学习探索
+*Multi-stage statistical analysis and machine learning exploration of 28-day readmission in patients with heart failure*
+
+
 ## 报告目录
 - [研究背景](#研究背景)
 - [数据与方法](#数据与方法)
