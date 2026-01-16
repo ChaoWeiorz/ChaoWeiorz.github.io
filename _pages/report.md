@@ -58,6 +58,34 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
 
 ## 主要结果
 
+<h3>关键结果 2：变量分布可视化</h3>
+
+<!-- Row 1 -->
+<div style="display:flex; overflow-x:auto; gap:12px; margin-bottom:16px;">
+  <img src="/images/s1.png"  style="height:220px;">
+  <img src="/images/s2.png"  style="height:220px;">
+  <img src="/images/s3.png"  style="height:220px;">
+  <img src="/images/s4.png"  style="height:220px;">
+  <img src="/images/s5.png"  style="height:220px;">
+</div>
+
+<!-- Row 2 -->
+<div style="display:flex; overflow-x:auto; gap:12px; margin-bottom:16px;">
+  <img src="/images/s6.png"  style="height:220px;">
+  <img src="/images/s7.png"  style="height:220px;">
+  <img src="/images/s8.png"  style="height:220px;">
+  <img src="/images/s9.png"  style="height:220px;">
+  <img src="/images/s10.png" style="height:220px;">
+</div>
+
+<!-- Row 3 -->
+<div style="display:flex; overflow-x:auto; gap:12px;">
+  <img src="/images/s11.png" style="height:220px;">
+  <img src="/images/s12.png" style="height:220px;">
+  <img src="/images/s13.png" style="height:220px;">
+  <img src="/images/s14.png" style="height:220px;">
+  <img src="/images/s15.png" style="height:220px;">
+</div>
 
 ### 关键结果 1：三种模型ROC比较
 
