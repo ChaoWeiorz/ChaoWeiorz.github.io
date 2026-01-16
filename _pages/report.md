@@ -58,7 +58,7 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
 
 ## 主要结果
 
-<h3>变量分布可视化</h3>
+### 变量分布可视化
 
 <!-- Row 1 -->
 <div style="display:flex; overflow-x:auto; gap:12px; margin-bottom:16px;">
@@ -87,7 +87,7 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
   <img src="/images/s15.png" style="height:220px;">
 </div>
 
-### 关键结果 1：三种模型ROC比较
+### 三种模型ROC比较
 
 <img src="/images/roc.png" alt="三种模型ROC比较" style="max-width:70%; height:auto;">
 
