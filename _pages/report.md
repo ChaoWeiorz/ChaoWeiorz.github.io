@@ -107,7 +107,38 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
   border-left:4px solid #3b82f6;
   padding-left:10px;
 ">
-三种模型ROC比较
+Logistic Regression 模型在测试集上的混淆矩阵
+</h3>
+
+<img src="/images/confusion.png" alt="Logistic Regression 混淆矩阵" style="max-width:60%; height:auto;">
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>要点：</strong><br>
+在以 0.5 作为分类阈值的情况下，Logistic Regression 模型在测试集中对未发生 28 天再入院的识别能力较强，
+但对再入院事件的识别能力明显不足，表现为特异度较高而灵敏度较低。
+该结果与样本中再入院事件比例较低的类别不平衡特征一致，
+提示在当前变量体系下模型更倾向于将患者预测为低风险人群，
+对短期再入院高风险患者的识别能力仍然有限。
+</div>
+
+
+
+
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+不同预测模型对 28 天再入院的 ROC 曲线比较
 </h3>
 
 <img src="/images/roc.png" alt="三种模型ROC比较" style="max-width:70%; height:auto;">
