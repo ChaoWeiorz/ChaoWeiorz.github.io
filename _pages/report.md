@@ -155,6 +155,58 @@ Logistic Regression 模型在测试集上的混淆矩阵
 </div>
 
 
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+Logistic Regression 模型回归系数、比值比及其 95% 置信区间
+</h3>
+
+<table style="border-collapse:collapse; margin:12px 0; width:100%;">
+  <thead>
+    <tr style="border-bottom:2px solid #e5e7eb;">
+      <th style="text-align:left; padding:6px;">Variable</th>
+      <th style="text-align:center; padding:6px;">Coefficient (β)</th>
+      <th style="text-align:center; padding:6px;">OR</th>
+      <th style="text-align:center; padding:6px;">95% CI lower</th>
+      <th style="text-align:center; padding:6px;">95% CI upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>ageCat</td><td align="center">0.17</td><td align="center">1.18</td><td align="center">0.96</td><td align="center">1.46</td></tr>
+    <tr><td>gender</td><td align="center">-0.19</td><td align="center">0.83</td><td align="center">0.54</td><td align="center">1.28</td></tr>
+    <tr><td>systolic.blood.pressure</td><td align="center">-0.28</td><td align="center">0.75</td><td align="center">0.60</td><td align="center">0.94</td></tr>
+    <tr><td>pulse</td><td align="center">0.07</td><td align="center">1.07</td><td align="center">0.87</td><td align="center">1.32</td></tr>
+    <tr><td>NYHA.cardiac.function.classification</td><td align="center">0.29</td><td align="center">1.34</td><td align="center">0.97</td><td align="center">1.84</td></tr>
+    <tr><td>brain.natriuretic.peptide</td><td align="center">-0.02</td><td align="center">0.98</td><td align="center">0.78</td><td align="center">1.22</td></tr>
+    <tr><td>creatinine.enzymatic.method</td><td align="center">0.18</td><td align="center">1.20</td><td align="center">0.97</td><td align="center">1.48</td></tr>
+    <tr><td>albumin</td><td align="center">0.10</td><td align="center">1.10</td><td align="center">0.88</td><td align="center">1.38</td></tr>
+    <tr><td>CCI.score</td><td align="center">0.15</td><td align="center">1.17</td><td align="center">0.94</td><td align="center">1.45</td></tr>
+  </tbody>
+</table>
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>要点：</strong><br>
+多变量 Logistic Regression 分析显示，
+在纳入 9 个自变量后，仅收缩压与 28 天再入院风险保持统计学显著关联
+（OR = 0.75，95% CI：0.60–0.94），
+表现为收缩压越低，再入院风险越高。
+其余变量的 95% 置信区间均跨越 1，未达到统计学显著性。
+其中，年龄分组、脉搏、NYHA 心功能分级、肌酐、白蛋白及 CCI 评分呈正向趋势，
+而性别及 B 型利钠肽呈负向趋势，
+上述方向性仅作趋势性描述，不作统计学结论。
+</div>
+
 
 <h3 style="
   font-size:1.1em;
