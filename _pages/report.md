@@ -58,7 +58,7 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
 
 ## 主要结果
 
-<h3>关键结果 2：变量分布可视化</h3>
+<h3>变量分布可视化</h3>
 
 <!-- Row 1 -->
 <div style="display:flex; overflow-x:auto; gap:12px; margin-bottom:16px;">
