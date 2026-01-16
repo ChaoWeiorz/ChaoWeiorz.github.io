@@ -56,6 +56,62 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
 利用主成分分析（PCA）对聚类结果进行二维可视化展示。
 
 ## 主要结果
+
+<table>
+  <caption><strong>表 1. 研究对象的基线特征描述性统计</strong></caption>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Descriptive statistics</th>
+      <th>Missing values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Gender</strong></td><td></td><td>0 (0.00%)</td></tr>
+    <tr><td>&nbsp;&nbsp;Male</td><td>845 (42.08%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;Female</td><td>1163 (57.92%)</td><td></td></tr>
+
+    <tr><td><strong>Age category</strong></td><td></td><td>0 (0.00%)</td></tr>
+    <tr><td>&nbsp;&nbsp;(21,29]</td><td>4 (0.20%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;(29,39]</td><td>12 (0.60%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;(39,49]</td><td>56 (2.79%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;(49,59]</td><td>106 (5.28%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;(59,69]</td><td>368 (18.33%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;(69,79]</td><td>715 (35.61%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;(79,89]</td><td>646 (32.17%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;(89,110]</td><td>101 (5.03%)</td><td></td></tr>
+
+    <tr><td><strong>NYHA class</strong></td><td></td><td>0 (0.00%)</td></tr>
+    <tr><td>&nbsp;&nbsp;II</td><td>353 (17.58%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;III</td><td>1039 (51.74%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;IV</td><td>616 (30.68%)</td><td></td></tr>
+
+    <tr><td><strong>CCI score</strong></td><td></td><td>5 (0.25%)</td></tr>
+    <tr><td>&nbsp;&nbsp;0</td><td>56 (2.79%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;1</td><td>770 (38.35%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;2</td><td>699 (34.81%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;3</td><td>368 (18.33%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;4</td><td>94 (4.68%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;5</td><td>15 (0.75%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;6</td><td>1 (0.05%)</td><td></td></tr>
+
+    <tr><td>Systolic blood pressure</td><td>131.25 ± 24.23</td><td>3 (0.15%)</td></tr>
+    <tr><td>Pulse</td><td>85.28 ± 21.46</td><td>1 (0.05%)</td></tr>
+    <tr><td>Albumin</td><td>36.53 ± 4.98</td><td>102 (5.08%)</td></tr>
+    <tr><td>BNP</td><td>753.03 (303.94, 1738.52)</td><td>35 (1.74%)</td></tr>
+    <tr><td>Creatinine</td><td>87.10 (64.90, 122.70)</td><td>23 (1.15%)</td></tr>
+
+    <tr><td><strong>28-day readmission</strong></td><td></td><td>0 (0.00%)</td></tr>
+    <tr><td>&nbsp;&nbsp;No</td><td>1868 (93.03%)</td><td></td></tr>
+    <tr><td>&nbsp;&nbsp;Yes</td><td>140 (6.97%)</td><td></td></tr>
+  </tbody>
+</table>
+
+对因变量与各自变量按变量类型进行汇总：
+对于分类变量，报告各类别的频数及百分比 [n (%)]，并报告缺失值个数及其百分比 [n (%)]；
+对于近似正态分布的连续变量，报告均值 ± 标准差（mean ± SD），并同时报告缺失值个数及其百分比 [n (%)]；
+对于右偏分布的连续变量，报告中位数及四分位距 [median (IQR)]，并报告缺失值个数及其百分比 [n (%)]。
+
 ### 关键结果 1：三种模型ROC比较
 
 <img src="/images/roc.png" alt="三种模型ROC比较" style="max-width:70%; height:auto;">
