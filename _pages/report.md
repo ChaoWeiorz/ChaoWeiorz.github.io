@@ -22,7 +22,7 @@ author_profile: true
 ## 主要结果
 ### 关键结果 1：三种模型ROC比较
 
-![模型性能图](/images/roc.png)
+<img src="/images/figure1.png" alt="三种模型ROC比较" style="max-width:70%; height:auto;">
 
 **结论：**  
 ROC 曲线比较结果显示，在测试集中三种监督学习模型对 28 天再入院的预测能力整体有限，但模型之间仍存在一定差异。Logistic Regression 的 AUC 为 0.58，高于 SVM（AUC = 0.54）和 Random Forest（AUC = 0.50），表现出相对更好的区分能力。相比之下，Random Forest 的 ROC 曲线基本贴近对角线，其预测性能接近随机分类。
