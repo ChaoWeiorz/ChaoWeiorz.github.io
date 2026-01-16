@@ -62,12 +62,12 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
 ## 主要结果
 
 <h3 style="
-  font-size:1.35em;
-  font-weight:700;
-  margin-top:2em;
-  margin-bottom:0.8em;
-  border-left:5px solid #3b82f6;
-  padding-left:12px;
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
 ">
 变量分布可视化
 </h3>
@@ -99,7 +99,16 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
   <img src="/images/s15.png" style="height:220px;">
 </div>
 
-### 三种模型ROC比较
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+三种模型ROC比较
+</h3>
 
 <img src="/images/roc.png" alt="三种模型ROC比较" style="max-width:70%; height:auto;">
 
@@ -110,7 +119,7 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
   margin:16px 0;
   border-radius:8px;
 ">
-<strong>结论要点：</strong><br>
+<strong>要点：</strong><br>
 三种模型在验证集上的判别能力整体有限，其中 Logistic Regression 表现相对最优（AUC = 0.58），
 Random Forest 接近随机分类（AUC ≈ 0.50），提示在当前特征与样本规模下模型预测能力仍有明显提升空间。
 </div>
