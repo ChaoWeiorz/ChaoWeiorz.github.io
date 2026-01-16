@@ -372,7 +372,157 @@ PCA 二维可视化显示，基于 K-means 聚类（K=4）的结果在二维主�
 为进一步探索心力衰竭患者的临床异质性提供了探索性线索。
 
 ## 核心代码
-（这里先空着）
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+核心代码：监督学习模型的训练与评估
+</h3>
+
+<div style="
+  max-height:420px;
+  overflow-y:auto;
+  background:#0f172a;
+  color:#e5e7eb;
+  padding:16px;
+  border-radius:10px;
+  font-size:0.85em;
+  line-height:1.6;
+">
+<pre><code class="language-python">
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import roc_auc_score, roc_curve
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+
+# -----------------------------
+# Model definitions
+# -----------------------------
+models = {
+    "Logistic Regression": Pipeline([
+        ("scaler", StandardScaler()),
+        ("model", LogisticRegression(max_iter=1000))
+    ]),
+    "Random Forest": RandomForestClassifier(
+        n_estimators=300,
+        random_state=42
+    ),
+    "Support Vector Machine": Pipeline([
+        ("scaler", StandardScaler()),
+        ("model", SVC(probability=True))
+    ])
+}
+
+# -----------------------------
+# Model training & evaluation
+# -----------------------------
+auc_results = {}
+
+for name, model in models.items():
+    model.fit(X_train, y_train)
+    y_prob = model.predict_proba(X_test)[:, 1]
+    auc = roc_auc_score(y_test, y_prob)
+    auc_results[name] = auc
+
+# -----------------------------
+# ROC curve (example)
+# -----------------------------
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+</code></pre>
+</div>
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>说明：</strong><br>
+在统一的数据划分与变量体系下，
+分别构建 Logistic Regression、Random Forest 与 Support Vector Machine 模型，
+并在测试集中基于预测概率计算 ROC 曲线及 AUC。
+</div>
+
+
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+核心代码：无监督学习（K-means 聚类与 PCA 可视化）
+</h3>
+
+<div style="
+  max-height:420px;
+  overflow-y:auto;
+  background:#0f172a;
+  color:#e5e7eb;
+  padding:16px;
+  border-radius:10px;
+  font-size:0.85em;
+  line-height:1.6;
+">
+<pre><code class="language-python">
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+# -----------------------------
+# Data standardization
+# -----------------------------
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_continuous)
+
+# -----------------------------
+# Elbow method for K selection
+# -----------------------------
+wcss = []
+K_range = range(2, 11)
+
+for k in K_range:
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    kmeans.fit(X_scaled)
+    wcss.append(kmeans.inertia_)
+
+# -----------------------------
+# K-means clustering (K = 4)
+# -----------------------------
+kmeans = KMeans(n_clusters=4, random_state=42)
+cluster_labels = kmeans.fit_predict(X_scaled)
+
+# -----------------------------
+# PCA for visualization
+# -----------------------------
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+</code></pre>
+</div>
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>说明：</strong><br>
+在无监督学习阶段，对连续临床变量进行标准化处理后，
+采用 K-means 聚类开展探索性分析。
+通过肘部法则评估不同聚类数下的类内平方和变化趋势，
+并在综合考虑统计指标与临床可解释性的基础上选定 K=4。
+随后利用主成分分析（PCA）将高维特征映射至二维空间，
+以辅助理解不同聚类亚群的整体分布结构与潜在异质性。
+</div>
 
 ---
 
