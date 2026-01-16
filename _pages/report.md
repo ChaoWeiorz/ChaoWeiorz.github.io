@@ -390,56 +390,56 @@ PCA 二维可视化显示，基于 K-means 聚类（K=4）的结果在二维主�
 <div style="
   max-height:420px;
   overflow-y:auto;
-  background:#f8fafc;
-  color:#111827;
-  padding:16px;
-  border-radius:10px;
-  font-size:0.85em;
-  line-height:1.6;
+  background:#fafafa;
   border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:16px;
+  font-size:0.85em;
+  line-height:1.7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 ">
-<pre><code class="language-python">
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-from sklearn.metrics import roc_auc_score, roc_curve
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
+<pre style="margin:0;">
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.linear_model</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">LogisticRegression</span>
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.ensemble</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">RandomForestClassifier</span>
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.svm</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">SVC</span>
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.metrics</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">roc_auc_score</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">roc_curve</span>
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.preprocessing</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">StandardScaler</span>
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.pipeline</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">Pipeline</span>
 
-# -----------------------------
-# Model definitions
-# -----------------------------
-models = {
-    "Logistic Regression": Pipeline([
-        ("scaler", StandardScaler()),
-        ("model", LogisticRegression(max_iter=1000))
-    ]),
-    "Random Forest": RandomForestClassifier(
-        n_estimators=300,
-        random_state=42
-    ),
-    "Support Vector Machine": Pipeline([
-        ("scaler", StandardScaler()),
-        ("model", SVC(probability=True))
-    ])
-}
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#6b7280;"># Model definitions</span>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#111827;">models</span> <span style="color:#6b7280;">=</span> <span style="color:#0ea5e9;">{</span>
+    <span style="color:#16a34a;">"Logistic Regression"</span><span style="color:#6b7280;">:</span> <span style="color:#111827;">Pipeline</span><span style="color:#6b7280;">([</span>
+        <span style="color:#6b7280;">(</span><span style="color:#16a34a;">"scaler"</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">StandardScaler</span><span style="color:#6b7280;">())</span><span style="color:#6b7280;">,</span>
+        <span style="color:#6b7280;">(</span><span style="color:#16a34a;">"model"</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">LogisticRegression</span><span style="color:#6b7280;">(</span><span style="color:#111827;">max_iter</span><span style="color:#6b7280;">=</span><span style="color:#0ea5e9;">1000</span><span style="color:#6b7280;">))</span>
+    <span style="color:#6b7280;">])</span><span style="color:#6b7280;">,</span>
+    <span style="color:#16a34a;">"Random Forest"</span><span style="color:#6b7280;">:</span> <span style="color:#111827;">RandomForestClassifier</span><span style="color:#6b7280;">(</span>
+        <span style="color:#111827;">n_estimators</span><span style="color:#6b7280;">=</span><span style="color:#0ea5e9;">300</span><span style="color:#6b7280;">,</span>
+        <span style="color:#111827;">random_state</span><span style="color:#6b7280;">=</span><span style="color:#0ea5e9;">42</span>
+    <span style="color:#6b7280;">)</span><span style="color:#6b7280;">,</span>
+    <span style="color:#16a34a;">"Support Vector Machine"</span><span style="color:#6b7280;">:</span> <span style="color:#111827;">Pipeline</span><span style="color:#6b7280;">([</span>
+        <span style="color:#6b7280;">(</span><span style="color:#16a34a;">"scaler"</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">StandardScaler</span><span style="color:#6b7280;">())</span><span style="color:#6b7280;">,</span>
+        <span style="color:#6b7280;">(</span><span style="color:#16a34a;">"model"</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">SVC</span><span style="color:#6b7280;">(</span><span style="color:#111827;">probability</span><span style="color:#6b7280;">=</span><span style="color:#111827;">True</span><span style="color:#6b7280;">))</span>
+    <span style="color:#6b7280;">])</span>
+<span style="color:#0ea5e9;">}</span>
 
-# -----------------------------
-# Model training & evaluation
-# -----------------------------
-auc_results = {}
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#6b7280;"># Model training &amp; evaluation</span>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#111827;">auc_results</span> <span style="color:#6b7280;">=</span> <span style="color:#0ea5e9;">{}</span>
 
-for name, model in models.items():
-    model.fit(X_train, y_train)
-    y_prob = model.predict_proba(X_test)[:, 1]
-    auc = roc_auc_score(y_test, y_prob)
-    auc_results[name] = auc
+<span style="color:#7c3aed;">for</span> <span style="color:#111827;">name</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">model</span> <span style="color:#7c3aed;">in</span> <span style="color:#111827;">models.items()</span><span style="color:#6b7280;">:</span>
+    <span style="color:#111827;">model.fit</span><span style="color:#6b7280;">(</span><span style="color:#111827;">X_train</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">y_train</span><span style="color:#6b7280;">)</span>
+    <span style="color:#111827;">y_prob</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">model.predict_proba</span><span style="color:#6b7280;">(</span><span style="color:#111827;">X_test</span><span style="color:#6b7280;">)</span><span style="color:#6b7280;">[:,</span> <span style="color:#0ea5e9;">1</span><span style="color:#6b7280;">]</span>
+    <span style="color:#111827;">auc</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">roc_auc_score</span><span style="color:#6b7280;">(</span><span style="color:#111827;">y_test</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">y_prob</span><span style="color:#6b7280;">)</span>
+    <span style="color:#111827;">auc_results</span><span style="color:#6b7280;">[</span><span style="color:#111827;">name</span><span style="color:#6b7280;">]</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">auc</span>
 
-# -----------------------------
-# ROC curve (example)
-# -----------------------------
-fpr, tpr, thresholds = roc_curve(y_test, y_prob)
-</code></pre>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#6b7280;"># ROC curve (example)</span>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#111827;">fpr</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">tpr</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">thresholds</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">roc_curve</span><span style="color:#6b7280;">(</span><span style="color:#111827;">y_test</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">y_prob</span><span style="color:#6b7280;">)</span>
+</pre>
 </div>
 
 <div style="
@@ -470,48 +470,48 @@ fpr, tpr, thresholds = roc_curve(y_test, y_prob)
 <div style="
   max-height:420px;
   overflow-y:auto;
-  background:#f8fafc;
-  color:#111827;
-  padding:16px;
-  border-radius:10px;
-  font-size:0.85em;
-  line-height:1.6;
+  background:#fafafa;
   border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:16px;
+  font-size:0.85em;
+  line-height:1.7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 ">
-<pre><code class="language-python">
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+<pre style="margin:0;">
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.cluster</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">KMeans</span>
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.preprocessing</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">StandardScaler</span>
+<span style="color:#6b7280;">from</span> <span style="color:#111827;">sklearn.decomposition</span> <span style="color:#6b7280;">import</span> <span style="color:#111827;">PCA</span>
 
-# -----------------------------
-# Data standardization
-# -----------------------------
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X_continuous)
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#6b7280;"># Data standardization</span>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#111827;">scaler</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">StandardScaler</span><span style="color:#6b7280;">()</span>
+<span style="color:#111827;">X_scaled</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">scaler.fit_transform</span><span style="color:#6b7280;">(</span><span style="color:#111827;">X_continuous</span><span style="color:#6b7280;">)</span>
 
-# -----------------------------
-# Elbow method for K selection
-# -----------------------------
-wcss = []
-K_range = range(2, 11)
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#6b7280;"># Elbow method for K selection</span>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#111827;">wcss</span> <span style="color:#6b7280;">=</span> <span style="color:#0ea5e9;">[]</span>
+<span style="color:#111827;">K_range</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">range</span><span style="color:#6b7280;">(</span><span style="color:#0ea5e9;">2</span><span style="color:#6b7280;">,</span> <span style="color:#0ea5e9;">11</span><span style="color:#6b7280;">)</span>
 
-for k in K_range:
-    kmeans = KMeans(n_clusters=k, random_state=42)
-    kmeans.fit(X_scaled)
-    wcss.append(kmeans.inertia_)
+<span style="color:#7c3aed;">for</span> <span style="color:#111827;">k</span> <span style="color:#7c3aed;">in</span> <span style="color:#111827;">K_range</span><span style="color:#6b7280;">:</span>
+    <span style="color:#111827;">kmeans</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">KMeans</span><span style="color:#6b7280;">(</span><span style="color:#111827;">n_clusters</span><span style="color:#6b7280;">=</span><span style="color:#111827;">k</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">random_state</span><span style="color:#6b7280;">=</span><span style="color:#0ea5e9;">42</span><span style="color:#6b7280;">)</span>
+    <span style="color:#111827;">kmeans.fit</span><span style="color:#6b7280;">(</span><span style="color:#111827;">X_scaled</span><span style="color:#6b7280;">)</span>
+    <span style="color:#111827;">wcss.append</span><span style="color:#6b7280;">(</span><span style="color:#111827;">kmeans.inertia_</span><span style="color:#6b7280;">)</span>
 
-# -----------------------------
-# K-means clustering (K = 4)
-# -----------------------------
-kmeans = KMeans(n_clusters=4, random_state=42)
-cluster_labels = kmeans.fit_predict(X_scaled)
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#6b7280;"># K-means clustering (K = 4)</span>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#111827;">kmeans</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">KMeans</span><span style="color:#6b7280;">(</span><span style="color:#111827;">n_clusters</span><span style="color:#6b7280;">=</span><span style="color:#0ea5e9;">4</span><span style="color:#6b7280;">,</span> <span style="color:#111827;">random_state</span><span style="color:#6b7280;">=</span><span style="color:#0ea5e9;">42</span><span style="color:#6b7280;">)</span>
+<span style="color:#111827;">cluster_labels</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">kmeans.fit_predict</span><span style="color:#6b7280;">(</span><span style="color:#111827;">X_scaled</span><span style="color:#6b7280;">)</span>
 
-# -----------------------------
-# PCA for visualization
-# -----------------------------
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X_scaled)
-</code></pre>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#6b7280;"># PCA for visualization</span>
+<span style="color:#6b7280;"># -----------------------------</span>
+<span style="color:#111827;">pca</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">PCA</span><span style="color:#6b7280;">(</span><span style="color:#111827;">n_components</span><span style="color:#6b7280;">=</span><span style="color:#0ea5e9;">2</span><span style="color:#6b7280;">)</span>
+<span style="color:#111827;">X_pca</span> <span style="color:#6b7280;">=</span> <span style="color:#111827;">pca.fit_transform</span><span style="color:#6b7280;">(</span><span style="color:#111827;">X_scaled</span><span style="color:#6b7280;">)</span>
+</pre>
 </div>
 
 <div style="
