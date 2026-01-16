@@ -99,6 +99,33 @@ Logistic Regression、Random Forest 与 Support Vector Machine 模型，
   <img src="/images/s15.png" style="height:220px;">
 </div>
 
+
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+不同预测模型对 28 天再入院的 ROC 曲线比较
+</h3>
+
+<img src="/images/roc.png" alt="三种模型ROC比较" style="max-width:70%; height:auto;">
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>要点：</strong><br>
+三种模型在验证集上的判别能力整体有限，其中 Logistic Regression 表现相对最优（AUC = 0.58），
+Random Forest 接近随机分类（AUC ≈ 0.50），提示在当前特征与样本规模下模型预测能力仍有明显提升空间。
+</div>
+
+
 <h3 style="
   font-size:1.1em;
   font-weight:600;
@@ -129,7 +156,6 @@ Logistic Regression 模型在测试集上的混淆矩阵
 
 
 
-
 <h3 style="
   font-size:1.1em;
   font-weight:600;
@@ -138,10 +164,10 @@ Logistic Regression 模型在测试集上的混淆矩阵
   border-left:4px solid #3b82f6;
   padding-left:10px;
 ">
-不同预测模型对 28 天再入院的 ROC 曲线比较
+Logistic Regression 模型的 SHAP 汇总图（特征重要性与方向性）
 </h3>
 
-<img src="/images/roc.png" alt="三种模型ROC比较" style="max-width:70%; height:auto;">
+<img src="/images/shapsum.png" alt="Logistic Regression SHAP 汇总图" style="max-width:70%; height:auto;">
 
 <div style="
   background:#f6f8fa;
@@ -151,9 +177,114 @@ Logistic Regression 模型在测试集上的混淆矩阵
   border-radius:8px;
 ">
 <strong>要点：</strong><br>
-三种模型在验证集上的判别能力整体有限，其中 Logistic Regression 表现相对最优（AUC = 0.58），
-Random Forest 接近随机分类（AUC ≈ 0.50），提示在当前特征与样本规模下模型预测能力仍有明显提升空间。
+SHAP 汇总图显示，模型预测主要由连续临床指标驱动，
+其中 B 型利钠肽（BNP）、肌酐及收缩压对模型输出的影响最为显著。
+较高的肌酐水平与较低的收缩压均推动模型更倾向预测为 28 天再入院，
+而 BNP 在本模型中呈现出与传统长期预后认知不同的方向性：
+较高 BNP 水平反而降低模型预测为短期再入院的概率。
+这一现象可能与研究结局聚焦于短期再入院、
+以及高 BNP 患者在临床管理中接受更充分干预有关，
+提示 SHAP 结果应被理解为特定研究情境下的模型决策特征，
+而非对 BNP 临床意义的重新定义。
 </div>
+
+
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+主要连续变量的 SHAP 依赖图（Logistic Regression 模型）
+</h3>
+
+<div style="display:flex; overflow-x:auto; gap:16px; margin:12px 0;">
+  <img src="/images/shapdep1.png" alt="BNP 的 SHAP 依赖图" style="height:260px;">
+  <img src="/images/shapdep2.png" alt="肌酐的 SHAP 依赖图" style="height:260px;">
+  <img src="/images/shapdep3.png" alt="收缩压的 SHAP 依赖图" style="height:260px;">
+</div>
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>要点：</strong><br>
+SHAP 依赖图显示模型主要通过连续变量的单调关系进行决策。
+BNP 与 SHAP 值呈近似线性负相关，较高 BNP 水平推动模型预测为未再入院；
+肌酐与 SHAP 值呈稳定正相关，提示肾功能受损程度越高，再入院风险越大；
+收缩压则呈清晰的负相关关系，较低收缩压推动模型更倾向预测为再入院。
+上述关系在不同协变量分层下整体一致，
+反映了连续临床指标在短期再入院预测中的稳定方向性作用模式。
+</div>
+
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+K-means 聚类的肘部法则图
+</h3>
+
+<img src="/images/k1.png" alt="K-means 聚类的肘部法则图" style="max-width:60%; height:auto;">
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>要点：</strong><br>
+肘部法则图显示，随着聚类数 K 的增加，类内平方和（WCSS）持续下降但降幅逐渐减小。
+当 K 从 2 增加至 4 时，WCSS 下降较为明显；而当 K 大于 4 后，曲线趋于平缓，
+提示进一步增加聚类数对类内紧密度的改善有限。
+结合轮廓系数结果及聚类结果的临床可解释性，
+本研究最终选择 K=4 作为 K-means 聚类的聚类数，
+用于后续聚类分析与可视化展示。
+</div>
+
+
+<h3 style="
+  font-size:1.1em;
+  font-weight:600;
+  margin-top:1.6em;
+  margin-bottom:0.6em;
+  border-left:4px solid #3b82f6;
+  padding-left:10px;
+">
+K-means 聚类结果的 PCA 二维可视化（K = 4）
+</h3>
+
+<img src="/images/k2.png" alt="K-means 聚类结果的 PCA 二维可视化" style="max-width:65%; height:auto;">
+
+<div style="
+  background:#f6f8fa;
+  border-left:4px solid #3b82f6;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:8px;
+">
+<strong>要点：</strong><br>
+PCA 二维可视化显示，基于 K-means 聚类（K=4）的结果在二维主成分空间中形成了相对清晰的分布结构，
+尽管部分区域存在重叠，但整体仍呈现一定程度的分离趋势。
+部分聚类主要沿第一主成分（PC1）方向分布，
+而另一些聚类更多体现在第二主成分（PC2）方向上的区分，
+反映了研究人群在连续临床指标上的潜在异质性。
+需要指出的是，PCA 可视化仅用于辅助理解聚类结构，
+其二维投影无法完全反映高维空间中的真实距离关系，
+但仍为后续对不同聚类亚群进行描述性比较提供了直观依据。
+</div>
+
+
+
 
 ## 讨论
 
