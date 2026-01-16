@@ -384,7 +384,7 @@ PCA 二维可视化显示，基于 K-means 聚类（K=4）的结果在二维主�
   border-left:4px solid #3b82f6;
   padding-left:10px;
 ">
-核心代码：监督学习模型的训练与评估
+监督学习模型的训练与评估
 </h3>
 
 <div style="
@@ -464,7 +464,7 @@ fpr, tpr, thresholds = roc_curve(y_test, y_prob)
   border-left:4px solid #3b82f6;
   padding-left:10px;
 ">
-核心代码：无监督学习（K-means 聚类与 PCA 可视化）
+无监督学习（K-means 聚类与 PCA 可视化）
 </h3>
 
 <div style="
