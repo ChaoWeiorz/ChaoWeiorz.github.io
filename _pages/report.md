@@ -26,7 +26,7 @@ Zhang, Zhongheng, et al. "Hospitalized patients with heart failure: integrating 
 
 ## 数据与方法
 
-### 数据来源与研究对象
+**数据来源与研究对象**
 研究数据来源于 PhysioNet 公共数据库中
 “Hospitalized patients with heart failure”回顾性队列，
 该数据集基于中国四川地区真实世界电子病历构建，
@@ -37,7 +37,7 @@ Zhang, Zhongheng, et al. "Hospitalized patients with heart failure: integrating 
 从原始 168 个变量中筛选出 10 个研究变量（1 个因变量、9 个自变量），
 构建统一分析框架。
 
-### 数据预处理与统计分析
+**数据预处理与统计分析**
 对分类及等级变量进行重编码，并依据变量分布特征完成缺失值填补。
 随后按结局变量进行分层随机抽样，将数据划分为训练集（70%）与测试集（30%）。
 
@@ -45,7 +45,7 @@ Zhang, Zhongheng, et al. "Hospitalized patients with heart failure: integrating 
 采用描述性统计、成对删除法的组间比较及单因素 Logistic 回归，
 探索各变量与 28 天再入院风险之间的关联。
 
-### 监督学习与无监督学习
+**监督学习与无监督学习**
 在监督学习阶段，基于填补后数据集分别构建
 Logistic Regression、Random Forest 与 Support Vector Machine 模型，
 统一在训练集上建模、在测试集上评估，并通过 ROC 曲线与 AUC 比较模型性能。
