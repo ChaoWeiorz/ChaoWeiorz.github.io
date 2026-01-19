@@ -7,7 +7,8 @@ redirect_from:
   - /about.html
 ---
 
-Personal Homepage: [http://chaoweior.xyz/](http://chaoweior.xyz/)
+## Personal Homepage: 
+[http://chaoweior.xyz/](http://chaoweior.xyz/)
 
 Hi, I’m Wei Chen. I did my undergraduate studies at the School of Health Humanities, Peking University, and I’m now a master’s student at Peking University Third Hospital.
 
